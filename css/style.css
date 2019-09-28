@@ -23,12 +23,27 @@ nav, h3, .card, .jumbotron {
 footer {
     background-color: #18BC9C;
     /* background-color: lightskyblue; */
+    margin-top: 15px;
 }
 
 .navbar-nav {
     font-size: 1rem;
 }
 
-.sponsor {
-    background-color: ightsalmon !important;
+.sponsor-icon {
+    margin-bottom: 7px;
+}
+
+.text {
+    font-size: 1.2rem;
+}
+
+.bottom {
+    height: 15px;
+}
+
+.jumbotron-btn {
+    background-color: #18BC9C;
+    opacity: 0.9;
+    border: #18BC9C solid 1px;
 }

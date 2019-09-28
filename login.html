@@ -51,38 +51,52 @@
                 </div>
             </div>
         </nav>
-        <!-- Body -->
-        <div class="container">
-            <!-- Jumbotron -->
-            <div class="jumbotron">
-                <h1 class="display-4">We all run on OneMoreMeal™</h1>
-                <hr class="my-4">
-                <p class="lead">OneMoreMeal provides a community-based data solution to reduce poverty. In the short-term, we partner with local restaurant owners to create a sustainable ecosystem for reducing hunger; In the long-term, we assist GOV/NGO/Research Institutions on the effort of eliminating poverty through Research/Planning/Social Work by providing insightful data on the users of our service.</p>
-                <a class="btn btn-primary btn-lg" href="beneficiaries.html" role="button">Learn more</a>
-            </div>
-            <!-- Log in buttons for different groups -->
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <!-- Redirect to the login page, originally redirected to sponsors.html -->
-                    <a href="login.html" class="btn btn-primary btn-lg btn-block redirect" style="background-color: lightsalmon; border: lightsalmon solid 1px">
-                        <p><i class="fas fa-utensils" style="font-size: 64px"></i></p>
-                        Continue as Sponsor/Restaurant</a>
-                </div>
-                <div class="col-sm-12 col-md-6">
-                    <!-- Redirect to the login page, originally redirected to organizations.html -->
-                    <a href="login.html" class="btn btn-primary btn-lg btn-block redirect" style="background-color: skyblue; border: skyblue solid 1px">
-                        <p><i class="fas fa-briefcase" style="font-size: 64px"></i></p>
-                        Continue as NGO/GOV/Research</a>
+        <!-- Login Form -->
+        <div class="cotainer">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Login</div>
+                        <div class="card-body">
+                            <form action="" method="">
+                                <div class="form-group row">
+                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="email_address" class="form-control" name="email-address" required autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                    <div class="col-md-6">
+                                        <input type="password" id="password" class="form-control" name="password" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-4">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="remember"> Remember Me
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Login
+                                    </button>
+                                    <a href="#" class="btn btn-link">
+                                        Forgot Your Password?
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Footer and Copyright -->
-        <div class="bottom"></div>
-        <footer class="page-footer font-small navbar-fixed-bottom" style="color: white">
-            <div class="footer-copyright text-center py-3">
-                Copyright © 2019 OneMoreMeal™
-            </div>
-        </footer>
         <!-- Load Bootstrap4 Scripts -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

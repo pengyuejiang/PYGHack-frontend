@@ -78,24 +78,6 @@
                     insightful data on the users of our service.</p>
                 <a class="btn btn-primary btn-lg" href="beneficiaries.html" role="button">Learn more</a>
             </div>
-            <!-- Collect Data for Analysis -->
-            <h2>Collect Data for Analysis</h2>
-            <hr>
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum.</p>
-            <!-- Register Your Organization -->
-            <h2>Register Your Organization</h2>
-            <hr>
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum.</p>
         </div>
 
         <div class="container" v-else>
@@ -131,15 +113,15 @@
                 </div>
             </div>
             <!-- Buttons for Login/Register -->
-            <div>
-                <a v-if="!is_login" class="btn btn-primary btn-lg btn-block" href="passport.html?page=login">Login</a>
-                <a v-if="is_login" class="btn btn-primary btn-lg btn-block" href="passport.html?page=register">Register</a>
+            <div style="width: 83%; margin: 0 auto 15px;">
+                <a v-if="!is_login" class="btn btn-primary btn-lg btn-block" href="passport.html?page=login">Switch to Login</a>
+                <a v-if="is_login" class="btn btn-primary btn-lg btn-block" href="passport.html?page=register">Switch to Register</a>
             </div>
         </div>
     </div>
 
     <!-- Login Form -->
-    <div class="cotainer" v-if="is_login" id="login">
+    <div v-if="is_login" id="login">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -186,7 +168,7 @@
         </div>
     </div>
 
-    <div class="cotainer" v-if="is_login == false" id="register">
+    <div v-if="is_login == false" id="register">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -252,6 +234,13 @@
     </div>
     </div>
     </div>
+    <!-- Footer and Copyright -->
+    <div class="bottom"></div>
+    <footer class="page-footer font-small" style="color: white">
+        <div class="footer-copyright text-center py-3">
+            Copyright © 2019 OneMoreMeal™
+        </div>
+    </footer>
     <!-- Load Bootstrap4 Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

@@ -17,8 +17,8 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <!-- Navbar for Organizations -->
-        <nav class="navbar navbar-dark bg-dark navbar-expand-sm py-2" style="background-color: skyblue !important;">
+        <!-- Navbar -->
+        <nav class="navbar navbar-dark bg-dark navbar-expand-sm py-2">
             <div class="container">
                 <!-- Icon -->
                 <a class="navbar-brand" href="#">OneMoreMeal™</a>
@@ -55,31 +55,37 @@
             </div>
         </nav>
         <!-- Body -->
-        <!-- Jumbotron -->
-        <div class="jumbotron">
-            <h1 class="display-4">OneMoreMeal™ with Organizations</h1>
-            <hr class="my-4">
-            <p class="lead">OneMoreMeal provides a community-based data solution to reduce poverty. In the short-term, we partner with local restaurant owners to create a sustainable ecosystem for reducing hunger; In the long-term, we assist GOV/NGO/Research Institutions on the effort of eliminating poverty through Research/Planning/Social Work by providing insightful data on the users of our service.</p>
-            <a class="btn btn-primary btn-lg" href="beneficiaries.html" role="button">Learn more</a>
-        </div>
-        <!-- Redirect to different data views -->
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <!-- Redirect to the login page, originally redirected to sponsors.html -->
-                <a href="insights/donation_and_consume_count/index.html" class="btn btn-primary btn-lg btn-block redirect" style="background-color: skyblue; border: skyblue solid 1px">
-                    <p><i class="fas fa-utensils" style="font-size: 64px"></i></p>
-                    View Donation and Consume Count</a>
+        <div class="container">
+            <!-- Jumbotron -->
+            <div class="jumbotron">
+                <h1 class="display-4">OneMoreMeal™ with Organizations</h1>
+                <hr class="my-4">
+                <p class="lead">OneMoreMeal provides a community-based data solution to reduce poverty. In the short-term, we partner with local restaurant owners to create a sustainable ecosystem for reducing hunger; In the long-term, we assist GOV/NGO/Research Institutions on the effort of eliminating poverty through Research/Planning/Social Work by providing insightful data on the users of our service.</p>
+                <a class="btn btn-primary btn-lg" href="beneficiaries.html" role="button">Learn more</a>
             </div>
-            <div class="col-sm-12 col-md-6">
-                <!-- Redirect to the login page, originally redirected to organizations.html -->
-                <a href="insights/poverty_rate/index.html" class="btn btn-primary btn-lg btn-block redirect" style="background-color: skyblue; border: skyblue solid 1px">
-                    <p><i class="fas fa-briefcase" style="font-size: 64px"></i></p>
-                    View Poverty Rate</a>
+            <!-- Redirect to different data views -->
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <!-- Redirect to the login page, originally redirected to sponsors.html -->
+                    <a href="insights/donation_and_consume_count/index.html" target="_blank" class="btn btn-primary btn-lg btn-block redirect">
+                        <p><i class="fas fa-chart-bar" style="font-size: 64px"></i></p>
+                        View Donation and Consume Count</a>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <!-- Redirect to the login page, originally redirected to organizations.html -->
+                    <a href="insights/poverty_rate/index.html" target="_blank" class="btn btn-primary btn-lg btn-block redirect">
+                        <p><i class="fas fa-chart-bar" style="font-size: 64px"></i></p>
+                        View Poverty Rate</a>
+                </div>
             </div>
+            <div class="row">
+                <a @click="alert('To be developed!')" class="btn btn-primary btn-lg btn-block">Fill in the Survey</a>
+            </div>
+            
         </div>
         <!-- Footer and Copyright -->
         <div class="bottom"></div>
-        <footer class="page-footer font-small" style="color: white; background-color: skyblue !important;">
+        <footer class="page-footer font-small" style="color: white;">
             <div class="footer-copyright text-center py-3">
                 Copyright © 2019 OneMoreMeal™
             </div>

@@ -12,11 +12,11 @@
 
 <body>
   <div class="nav">
-    <font class="title">Fall Enrollment</font>
+    <font class="title">Poverty Rate</font>
   </div>
   <div class="left">
     <font class="title">
-      Academic Year
+      Year
     </font>
   </div>
   <div class="right">
@@ -33,7 +33,7 @@
 </body>
 
 <script>
-  var u = update(2011, data); // initial update
+  var u = update(2019, data); // initial update
 
   for (var i = start_year; i <= end_year; i++) {
     $(".left").append("<font class='item' onclick='u = click_update(u," + i + ",data)'>" + i + "</font>");

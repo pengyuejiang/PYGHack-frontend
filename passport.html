@@ -78,6 +78,7 @@
                     insightful data on the users of our service.</p>
                 <a class="btn btn-primary btn-lg" href="beneficiaries.html" role="button">Learn more</a>
             </div>
+            <!-- Collect Data for Analysis -->
         </div>
 
         <div class="container" v-else>
@@ -113,15 +114,16 @@
                 </div>
             </div>
             <!-- Buttons for Login/Register -->
-            <div style="width: 83%; margin: 0 auto 15px;">
-                <a v-if="!is_login" class="btn btn-primary btn-lg btn-block" href="passport.html?page=login">Switch to Login</a>
-                <a v-if="is_login" class="btn btn-primary btn-lg btn-block" href="passport.html?page=register">Switch to Register</a>
+            <div>
+                <a v-if="!is_login" class="btn btn-primary btn-lg btn-block" href="passport.html?page=login">Login</a>
+                <a v-if="is_login" class="btn btn-primary btn-lg btn-block"
+                    href="passport.html?page=register">Register</a>
             </div>
         </div>
     </div>
 
     <!-- Login Form -->
-    <div v-if="is_login" id="login">
+    <div class="cotainer" v-if="is_login" id="login">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -168,7 +170,7 @@
         </div>
     </div>
 
-    <div v-if="is_login == false" id="register">
+    <div class="cotainer" v-if="is_login == false" id="register">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -234,13 +236,6 @@
     </div>
     </div>
     </div>
-    <!-- Footer and Copyright -->
-    <div class="bottom"></div>
-    <footer class="page-footer font-small" style="color: white">
-        <div class="footer-copyright text-center py-3">
-            Copyright © 2019 OneMoreMeal™
-        </div>
-    </footer>
     <!-- Load Bootstrap4 Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -279,6 +274,8 @@
             method: 'GET',
             url: BASE_URL + 'passport/info'
         })
+
+        window.location.href = 'authorities.html'
     }
 
     checkIfUserLoggedIn()
@@ -317,6 +314,7 @@
                 }
 
                 alert('Login Success!')
+                window.location.href = 'authorities.html'
             }
         },
         computed: {

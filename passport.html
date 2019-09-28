@@ -189,7 +189,6 @@
             </div>
         </div>
     </div>
-
     <div class="cotainer" v-if="is_login == false" id="register">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -271,6 +270,8 @@
 <script>
     const BASE_URL = 'https://pyghack.zuggr.com/'
 
+        <<
+        << << < HEAD
     const urlParams = new URLSearchParams(window.location.search);
 
     const store = new Vuex.Store({
@@ -299,104 +300,138 @@
     checkIfUserLoggedIn()
 
     var login = new Vue({
-        el: '#login',
-        data: {
-            loginData: {
-                email: null,
-                password: null
-            }
-        },
-        methods: {
-            async login() {
-                var data = this.loginData
-
-                try {
-                    var response = await axios({
-                        method: 'POST',
-                        url: BASE_URL + 'passport/login',
-                        data: JSON.stringify(data)
-                    })
-                } catch (e) {
-                    alert('Invalid username or password')
-                }
-
-                console.log(response.data)
-                alert('Welcome back! ' + response.data.data.name)
-            }
-        },
-        computed: {
-            is_login() {
-                return store.state.is_login
-            }
-        }
-    })
-
-    var welcome = new Vue({
-        el: '#top_welcome',
-        computed: {
-            is_org() {
-                return store.state.is_org
-            }
-        }
-    })
-
-    var register = new Vue({
-        el: '#register',
-        data: {
-            registerData: {
-                password: null,
-                email: null,
-                code: null,
+                el: '#login',
                 data: {
-                    name: null,
-                    type: 'sponsor'
-                }
-            }
-        },
-        computed: {
-            is_login() {
-                return store.state.is_login
-            }
-        },
-        methods: {
-            async register() {
+                    loginData: {
+                        email: null,
+                        password: null ===
+                            === =
+                            const urlParams = new URLSearchParams(window.location.search);
 
-                switch (this.registerData.data.type) {
-                    case 'sponsor':
-                        this.registerData.data.type = 0;
-                        break;
-                    case 'user':
-                        this.registerData.data.type = 1;
-                        break;
-                    case 'authority':
-                        this.registerData.data.type = 2;
-                        break;
-                }
+                        const store = new Vuex.Store({
+                                state: {
+                                    is_login: urlParams.get('page') == 'login'
+                                },
+                                getters: {
+                                    //
+                                },
+                                mutations: {
+                                    //
+                                },
+                                actions: {
+                                    //
+                                    >>>
+                                    >>> > 5 b701b02951871aa4b211308131cf37cbb1933b7
+                                }
+                            },
+                            methods: {
+                                async login() {
+                                    var data = this.loginData
 
-                var response = await axios({
-                    method: 'POST',
-                    url: BASE_URL + 'passport/register',
-                    data: JSON.stringify(this.registerData)
-                })
-            },
-            async getCode() {
-                if (this.registerData.email == null) {
-                    alert('please fill')
-                    return
-                }
+                                    try {
+                                        var response = await axios({
+                                            method: 'POST',
+                                            url: BASE_URL + 'passport/login',
+                                            data: JSON.stringify(data)
+                                        })
+                                    } catch (e) {
+                                        alert('Invalid username or password')
+                                    }
 
-                await axios({
-                    method: 'POST',
-                    url: BASE_URL + 'send/validation',
-                    params: {
-                        email: this.registerData.email
-                    }
-                })
+                                    console.log(response.data)
+                                    alert('Welcome back! ' + response.data.data.name)
+                                }
+                            },
+                            computed: {
+                                is_login() {
+                                    return store.state.is_login
+                                }
+                            } <<
+                            << << < HEAD
+                        }) ===
+                    === =
 
-                alert('please check your email inbox')
-            }
-        }
-    })
+                    checkIfUserLoggedIn()
+
+                    var login = new Vue({
+                                el: '#login',
+                                data: {
+                                    loginData: {
+                                        email: null,
+                                        password: null
+                                    }
+                                },
+                                methods: {
+                                    async login() {
+                                            var data = this.loginData >>>
+                                                >>> > 5 b701b02951871aa4b211308131cf37cbb1933b7
+
+                                            var welcome = new Vue({
+                                                el: '#top_welcome',
+                                                computed: {
+                                                    is_org() {
+                                                        return store.state.is_org
+                                                    }
+                                                }
+                                            })
+
+                                            var register = new Vue({
+                                                el: '#register',
+                                                data: {
+                                                    registerData: {
+                                                        password: null,
+                                                        email: null,
+                                                        code: null,
+                                                        data: {
+                                                            name: null,
+                                                            type: 'sponsor'
+                                                        }
+                                                    }
+                                                },
+                                                computed: {
+                                                    is_login() {
+                                                        return store.state.is_login
+                                                    }
+                                                },
+                                                methods: {
+                                                    async register() {
+
+                                                        switch (this.registerData.data.type) {
+                                                            case 'sponsor':
+                                                                this.registerData.data.type = 0;
+                                                                break;
+                                                            case 'user':
+                                                                this.registerData.data.type = 1;
+                                                                break;
+                                                            case 'authority':
+                                                                this.registerData.data.type = 2;
+                                                                break;
+                                                        }
+
+                                                        var response = await axios({
+                                                            method: 'POST',
+                                                            url: BASE_URL + 'passport/register',
+                                                            data: JSON.stringify(this.registerData)
+                                                        })
+                                                    },
+                                                    async getCode() {
+                                                        if (this.registerData.email == null) {
+                                                            alert('please fill')
+                                                            return
+                                                        }
+
+                                                        await axios({
+                                                            method: 'POST',
+                                                            url: BASE_URL + 'send/validation',
+                                                            params: {
+                                                                email: this.registerData.email
+                                                            }
+                                                        })
+
+                                                        alert('please check your email inbox')
+                                                    }
+                                                }
+                                            })
 </script>
 
 </html>

@@ -78,10 +78,12 @@
                         View Poverty Rate</a>
                 </div>
             </div>
-            <div class="row">
-                <a @click="alert('To be developed!')" class="btn btn-primary btn-lg btn-block">Fill in the Survey</a>
-            </div>
-            
+            <button id="survey-btn" class="btn btn-primary btn-lg btn-block">Fill out the Survey</button>
+            <script>
+                document.getElementById('survey-btn').addEventListener('click', function() {
+                    alert('To be developed!')
+                })
+            </script>
         </div>
         <!-- Footer and Copyright -->
         <div class="bottom"></div>

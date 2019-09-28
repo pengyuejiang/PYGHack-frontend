@@ -141,18 +141,15 @@
                                     </div>
                                 </div>
                                
-                                <div class="dropdown btn">
-                                    <div id="dropDownId" class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="registerData.data.type">
-                                        Type
-                                        <b class="caret"></b>
-                                    </div>           
-                                    <ul id="dropDownUL"  class="dropdown-menu pull-left" role="menu" aria-labelledby="dLabel">
-                                    <li><a tabindex="-1" href="#" align="left">Static test Option</a></li>
-                                    </ul>
-                                
-                                
+                                <div class="form-group row">
+                                    <label for="tpye" class="col-md-4 col-form-label text-md-right">user type</label>
+                                    <select name="type" id="type" class="col-md-4">
+                                        <option registerData.data.type=0>user</option>
+                                        <option registerData.data.type=1>sponsor</option>
+                                        <option registerData.data.type=2>authority</option>
+                                    </select>
                                 </div>
-
+                                
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary" @click="register()">
                                         Register

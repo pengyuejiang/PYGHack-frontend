@@ -1,289 +1,406 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Home | OneMoreMeal™</title>
-        <!-- Original Boostrap4 CDN -->
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-        <!-- Tweaked Bootstrap4 CDN -->
-        <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-T5jhQKMh96HMkXwqVMSjF3CmLcL1nT9//tCqu9By5XSdj7CwR0r+F3LTzUdfkkQf" crossorigin="anonymous">
-        <!-- Vue.js CDN -->
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet">
-        <!-- Font Awesome -->
-        <script src="https://kit.fontawesome.com/d1f865536f.js" crossorigin="anonymous"></script>
 
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <!-- stylesheet -->
-        <link rel="stylesheet" href="css/style.css">
+<head>
+    <meta charset="utf-8">
+    <title>Home | OneMoreMeal™</title>
+    <!-- Original Boostrap4 CDN -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <!-- Tweaked Bootstrap4 CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T5jhQKMh96HMkXwqVMSjF3CmLcL1nT9//tCqu9By5XSdj7CwR0r+F3LTzUdfkkQf" crossorigin="anonymous">
+    <!-- Vue.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d1f865536f.js" crossorigin="anonymous"></script>
 
-        <script src="https://unpkg.com/vuex@3.1.0/dist/vuex.js"></script>
-    </head>
-    <body>
-        <!-- Navbar -->
-        <nav class="navbar navbar-dark bg-dark navbar-expand-sm py-2">
-            <div class="container">
-                <!-- Icon -->
-                <a class="navbar-brand" href="#">OneMoreMeal™</a>
-                <!-- Collapse Button -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <!-- Collapse Content -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="beneficiaries.html">Beneficiaries</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://www.notion.so/OneMoreMeal-Open-API-90868cfc2eb44e19ae53eb93193ff871">Open API</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Their Stories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Our Stories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Support</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Events</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Login Form -->
-        <div class="cotainer" v-if="is_login" id="login">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">Login</div>
-                        <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-                                    <div class="col-md-6">
-                                        <input v-model="loginData.email" type="text" id="email_address" class="form-control" name="email-address" required autofocus>
-                                    </div>
-                                </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
 
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                                    <div class="col-md-6">
-                                        <input v-model="loginData.password" type="password" id="password" class="form-control" name="password" required>
-                                    </div>
-                                </div>
+    <script src="https://unpkg.com/vuex@3.1.0/dist/vuex.js"></script>
+</head>
 
-                                <div class="form-group row">
-                                    <div class="col-md-6 offset-md-4">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="remember"> Remember Me
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary" @click="login()">
-                                        Login
-                                    </button>
-                                    <a href="#" class="btn btn-link">
-                                        Forgot Your Password?
-                                    </a>
-                                </div>
-                        </div>
-                    </div>
-                </div>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm py-2">
+        <div class="container">
+            <!-- Icon -->
+            <a class="navbar-brand" href="#">OneMoreMeal™</a>
+            <!-- Collapse Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapse Content -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="beneficiaries.html">Beneficiaries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="https://www.notion.so/OneMoreMeal-Open-API-90868cfc2eb44e19ae53eb93193ff871">Open
+                            API</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Their Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Our Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Events</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <div class="cotainer" v-if="is_login == false" id="register">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">Register</div>
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-                                    <div class="col-md-6">
-                                        <input v-model="registerData.email" type="text" id="email_address" class="form-control"
-                                            name="email-address" required autofocus>
-                                    </div>
-                                </div>
+    <div id="top_welcome">
+        <div class="container" v-if="is_org">
+            <!-- Jumbotron -->
+            <div class="jumbotron">
+                <h1 class="display-4">OneMoreMeal™ with Organizations</h1>
+                <hr class="my-4">
+                <p class="lead">OneMoreMeal provides a community-based data solution to reduce poverty. In
+                    the short-term, we partner with local restaurant owners to create a sustainable
+                    ecosystem for reducing hunger; In the long-term, we assist GOV/NGO/Research Institutions
+                    on the effort of eliminating poverty through Research/Planning/Social Work by providing
+                    insightful data on the users of our service.</p>
+                <a class="btn btn-primary btn-lg" href="beneficiaries.html" role="button">Learn more</a>
+            </div>
+            <!-- Collect Data for Analysis -->
+            <h2>Collect Data for Analysis</h2>
+            <hr>
+            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum.</p>
+            <!-- Register Your Organization -->
+            <h2>Register Your Organization</h2>
+            <hr>
+            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum.</p>
+        </div>
 
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                                    <div class="col-md-6">
-                                        <input v-model="registerData.password" type="password" id="password" class="form-control"
-                                            name="password" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="code" class="col-md-4 col-form-label text-md-right">code</label>
-                                    <div class="col-md-4">
-                                        <input v-model="registerData.code" type="text" id="code" class="form-control"
-                                            name="code" required>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="submit" class="btn btn-primary" @click="getCode()">
-                                            Get Code
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="Name" class="col-md-4 col-form-label text-md-right">Name</label>
-                                    <div class="col-md-6">
-                                        <input v-model="registerData.data.name" type="text" id="name" class="form-control"
-                                            name="name" required>
-                                    </div>
-                                </div>
+        <div class="container" v-else>
+            <!-- Jumbotron -->
+            <div class="jumbotron">
+                <h1 class="display-4">OneMoreMeal™ with Sponsors</h1>
+                <hr class="my-4">
+                <p class="lead">OneMoreMeal provides a community-based data solution to reduce poverty. In the
+                    short-term, we partner with local restaurant owners to create a sustainable ecosystem for
+                    reducing hunger; In the long-term, we assist GOV/NGO/Research Institutions on the effort of
+                    eliminating poverty through Research/Planning/Social Work by providing insightful data on
+                    the users of our service.</p>
+                <a class="btn btn-primary btn-lg" href="beneficiaries.html" role="button">Learn more</a>
+            </div>
+            <!-- Current Sponsors -->
+            <h2>Current Sponsors</h2>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-3 sponsor-icon">
+                    <img src="img/burgerking.png">
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 sponsor-icon">
+                    <img src="img/rsz_dunkindonuts.png">
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 sponsor-icon">
+                    <img src="img/kfc.png">
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 sponsor-icon">
+                    <img src="img/mcdonalds.png">
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 sponsor-icon">
+                    <img src="img/rsz_subway.png">
+                </div>
+            </div>
+            <!-- What do sponsors do? -->
+            <h2>What do sponsors do?</h2>
+            <hr>
+            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <!-- How to get involved -->
+            <h2>How to get involved</h2>
+            <hr>
+            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
 
-                                <div class="form-group row">
-                                    <label for="tpye" class="col-md-4 col-form-label text-md-right">user type</label>
-                                    <select name="type" id="type" class="col-md-4">
-                                        <option registerData.data.type=0>user</option>
-                                        <option registerData.data.type=1>sponsor</option>
-                                        <option registerData.data.type=2>authority</option>
-                                    </select>
-                                </div>
+    <!-- Login Form -->
+    <div class="cotainer" v-if="is_login" id="login">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Login</div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail
+                                Address</label>
+                            <div class="col-md-6">
+                                <input v-model="loginData.email" type="text" id="email_address" class="form-control"
+                                    name="email-address" required autofocus>
+                            </div>
+                        </div>
 
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary" @click="register()">
-                                        Register
-                                    </button>
-                                    <a href="#" class="btn btn-link">
-                                        Forgot Your Password?
-                                    </a>
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                            <div class="col-md-6">
+                                <input v-model="loginData.password" type="password" id="password" class="form-control"
+                                    name="password" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Remember Me
+                                    </label>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary" @click="login()">
+                                Login
+                            </button>
+                            <a href="#" class="btn btn-link">
+                                Forgot Your Password?
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="cotainer" v-if="is_login == false" id="register">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Register</div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail
+                                Address</label>
+                            <div class="col-md-6">
+                                <input v-model="registerData.email" type="text" id="email_address" class="form-control"
+                                    name="email-address" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                            <div class="col-md-6">
+                                <input v-model="registerData.password" type="password" id="password"
+                                    class="form-control" name="password" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="code" class="col-md-4 col-form-label text-md-right">code</label>
+                            <div class="col-md-4">
+                                <input v-model="registerData.code" type="text" id="code" class="form-control"
+                                    name="code" required>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-primary" @click="getCode()">
+                                    Get Code
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Name" class="col-md-4 col-form-label text-md-right">Name</label>
+                            <div class="col-md-6">
+                                <input v-model="registerData.data.name" type="text" id="name" class="form-control"
+                                    name="name" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tpye" class="col-md-4 col-form-label text-md-right">user type</label>
+                            <select name="type" id="type" class="col-md-4">
+                                <option registerData.data.type=0>user</option>
+                                <option registerData.data.type=1>sponsor</option>
+                                <option registerData.data.type=2>authority</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary" @click="register()">
+                                Register
+                            </button>
+                            <a href="#" class="btn btn-link">
+                                Forgot Your Password?
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Load Bootstrap4 Scripts -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
-
-    <script>
-        const BASE_URL = 'https://pyghack.zuggr.com/'
-
-        const urlParams = new URLSearchParams(window.location.search);
-
-        const store = new Vuex.Store({
-            state: {
-                is_login: urlParams.get('page') == 'login'
-            },
-            getters: {
-                //
-            },
-            mutations: {
-                //
-            },
-            actions: {
-                //
-            }
-        });
-
-        async function checkIfUserLoggedIn () {
-            var response = await axios(
-                {
-                    method: 'GET',
-                    url: BASE_URL + 'passport/info'
-                }
-            )
-        }
-
-        checkIfUserLoggedIn()
-
-        var login = new Vue({
-            el: '#login',
-            data: {
-                loginData: {
-                    email: null,
-                    password: null
-                }
-            },
-            methods: {
-                async login() {
-                    var data = this.loginData
-
-                    try {
-                        var response = await axios(
-                            {
-                                method: 'POST',
-                                url: BASE_URL + 'passport/login',
-                                data: JSON.stringify(data)
-                            }
-                        )
-                    } catch (e) {
-                        alert('Invalid username or password')
-                    }
-                }
-            },
-            computed: {
-                is_login() {
-                    return store.state.is_login
-                }
-            }
-        })
-
-        var register = new Vue({
-            el: '#register',
-            data: {
-                registerData: {
-                    password: null,
-                    email: null,
-                    code: null,
-                    data: {
-                        name: null,
-                        type: null
-                    }
-                }
-            },
-            computed: {
-                is_login() {
-                    return store.state.is_login
-                }
-            },
-            methods: {
-                async register() {
-                    var response = await axios(
-                        {
-                            method: 'POST',
-                            url: BASE_URL + 'passport/register',
-                            data: registerData
-                        }
-                    )
-                },
-                async getCode() {
-                    if (this.registerData.email == null) {
-                        alert('please fill')
-                        return
-                    }
-
-                    await axios(
-                        {
-                            method: 'POST',
-                            url: BASE_URL + 'send/validation',
-                            params: {
-                                email: this.registerData.email
-                            }
-                        }
-                    )
-
-                    alert('please check ...')
-                }
-            }
-        })
+    </div>
+    </div>
+    </div>
+    <!-- Load Bootstrap4 Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</body>
+
+<script>
+    const BASE_URL = 'https://pyghack.zuggr.com/'
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const store = new Vuex.Store({
+        state: {
+            is_login: urlParams.get('page') == 'login',
+            is_org: urlParams.get('type') == 'org'
+        },
+        getters: {
+            //
+        },
+        mutations: {
+            //
+        },
+        actions: {
+            //
+        }
+    });
+
+    async function checkIfUserLoggedIn() {
+        var response = await axios({
+            method: 'GET',
+            url: BASE_URL + 'passport/info'
+        })
+    }
+
+    checkIfUserLoggedIn()
+
+    var welcome = new Vue({
+        el: '#top_welcome',
+        computed: {
+            is_org() {
+                return store.state.is_org
+            }
+        }
+    })
+    var login = new Vue({
+        el: '#login',
+        data: {
+            loginData: {
+                email: null,
+                password: null
+            }
+        },
+        methods: {
+            async login() {
+                var data = this.loginData
+                try {
+                    var response = await axios({
+                        method: 'POST',
+                        url: BASE_URL + 'passport/login',
+                        data: JSON.stringify(data)
+                    })
+                } catch (e) {
+                    alert('Invalid username or password')
+                }
+
+                alert('Login Success!')
+            }
+        },
+        computed: {
+            is_login() {
+                return store.state.is_login
+            }
+        }
+    })
+
+    var register = new Vue({
+        el: '#register',
+        data: {
+            registerData: {
+                password: null,
+                email: null,
+                code: null,
+                data: {
+                    name: null,
+                    type: 'sponsor'
+                }
+            }
+        },
+        computed: {
+            is_login() {
+                return store.state.is_login
+            }
+        },
+        methods: {
+            async register() {
+
+                switch (this.registerData.data.type) {
+                    case 'sponsor':
+                        this.registerData.data.type = 0;
+                        break;
+                    case 'user':
+                        this.registerData.data.type = 1;
+                        break;
+                    case 'authority':
+                        this.registerData.data.type = 2;
+                        break;
+                }
+
+                var response = await axios({
+                    method: 'POST',
+                    url: BASE_URL + 'passport/register',
+                    data: JSON.stringify(this.registerData)
+                })
+            },
+            async getCode() {
+                if (this.registerData.email == null) {
+                    alert('please fill')
+                    return
+                }
+
+                await axios({
+                    method: 'POST',
+                    url: BASE_URL + 'send/validation',
+                    params: {
+                        email: this.registerData.email
+                    }
+                })
+
+                alert('please check your email inbox')
+            }
+        }
+    })
+</script>
+
 </html>

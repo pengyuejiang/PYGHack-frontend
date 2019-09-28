@@ -1,0 +1,99 @@
+.shadow_1 {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)
+}
+
+.shadow_2 {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3)
+}
+
+.shadow_3 {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3)
+}
+
+.shadow_4 {
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3)
+}
+
+body {
+  font-family: 'helvetica';
+}
+
+.nav {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 60px;
+  background-color: #C52929;
+  z-index: 10;
+}
+
+.nav .title {
+  color: white;
+  font-size: 24px;
+  float: left;
+  margin-left: 2%;
+  margin-top: 0px;
+  width: 96%;
+  height: 60px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60px;
+  text-align: justify;
+}
+
+.left {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 14%;
+  height: 100%;
+  background-color: #FAFAFA;
+  z-index: 1;
+  overflow-y: scroll;
+}
+
+.left .title {
+  float: left;
+  margin-left: 2vw;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 16.5px;
+}
+
+.left .item {
+  color: #666666;
+  font-size: 16.5;
+  float: left;
+  margin-left: 0px;
+  margin-top: 0px;
+  width: 100%;
+  height: 60px;
+  padding-left: 2vw;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 60px;
+  text-align: justify;
+}
+
+.left .item:hover {
+  background-color: #DB4D6D;
+  color: white;
+}
+
+.right {
+  position: absolute;
+  top: 60px;
+  left: 14%;
+  width: 86%;
+  background-color: white;
+  z-index: 1;
+}
+
+.right .container {
+  float: left;
+  margin-left: 5%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: 90%;
+}

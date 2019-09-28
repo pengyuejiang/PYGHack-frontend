@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="src/css/index.css">
+  <script src="data.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../../lib/chart.min.js"></script>
+  <script src="src/js/chart.js"></script>
+</head>
+
+<body>
+  <div class="nav">
+    <font class="title">Test Score</font>
+  </div>
+  <div class="left">
+    <font class="title">
+      Academic Year
+    </font>
+  </div>
+  <div class="right">
+    <div class="container">
+      <canvas id="twenty_five_score"></canvas>
+      <canvas id="seventy_five_score"></canvas>
+      <canvas id="twenty_five_score_act"></canvas>
+      <canvas id="seventy_five_score_act"></canvas>
+    </div>
+  </div>
+</body>
+
+<script>
+  var u = update(2016, data); // initial update
+
+  for (var i = start_year; i <= end_year; i++) {
+    $(".left").append("<font class='item' onclick='u = click_update(u," + i + ",data)'>" + i + "</font>");
+  }
+  $(".left").append("<font class='item'></font>");
+</script>
+
+</html>

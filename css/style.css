@@ -1,0 +1,12 @@
+* {
+    font-family: Raleway;
+}
+
+nav, h3, .card {
+    margin-bottom: 1.5rem;
+}
+
+footer {
+    background-color: #18BC9C;
+    /* background-color: lightskyblue; */
+}

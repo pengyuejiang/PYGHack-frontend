@@ -2,11 +2,25 @@
     font-family: Raleway;
 }
 
-nav, h3, .card {
+nav, h3, .card, .jumbotron {
     margin-bottom: 1.5rem;
+}
+
+.redirect {
+    margin-bottom: 1.2rem;
+    padding: 15px;
+    opacity: 0.9;
+}
+
+.redirect:hover {
+    opacity: 1;
 }
 
 footer {
     background-color: #18BC9C;
     /* background-color: lightskyblue; */
+}
+
+.navbar-nav {
+    font-size: 1rem;
 }

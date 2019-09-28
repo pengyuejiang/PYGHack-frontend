@@ -2,6 +2,10 @@
     font-family: Raleway;
 }
 
+html, body {
+    height: 100%;
+}
+
 nav, h3, .card, .jumbotron {
     margin-bottom: 1.5rem;
 }
@@ -23,4 +27,8 @@ footer {
 
 .navbar-nav {
     font-size: 1rem;
+}
+
+.sponsor {
+    background-color: ightsalmon !important;
 }

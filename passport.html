@@ -44,6 +44,11 @@
                         <a class="nav-link" href="beneficiaries.html">Beneficiaries</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link"
+                            href="https://www.notion.so/OneMoreMeal-Open-API-90868cfc2eb44e19ae53eb93193ff871">Open
+                            API</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="index.html">Their Stories</a>
                     </li>
                     <li class="nav-item">
@@ -61,37 +66,39 @@
     </nav>
 
     <div id="top_welcome">
-        <div v-if="is_org" class="container">
+        <div class="container" v-if="is_org">
             <!-- Jumbotron -->
             <div class="jumbotron">
                 <h1 class="display-4">OneMoreMeal™ with Organizations</h1>
                 <hr class="my-4">
-                <p class="lead">OneMoreMeal provides a community-based data solution to reduce poverty. In the
-                    short-term, we partner with local restaurant owners to create a sustainable ecosystem for reducing
-                    hunger; In the long-term, we assist GOV/NGO/Research Institutions on the effort of eliminating
-                    poverty through Research/Planning/Social Work by providing insightful data on the users of our
-                    service.</p>
+                <p class="lead">OneMoreMeal provides a community-based data solution to reduce poverty. In
+                    the short-term, we partner with local restaurant owners to create a sustainable
+                    ecosystem for reducing hunger; In the long-term, we assist GOV/NGO/Research Institutions
+                    on the effort of eliminating poverty through Research/Planning/Social Work by providing
+                    insightful data on the users of our service.</p>
                 <a class="btn btn-primary btn-lg" href="beneficiaries.html" role="button">Learn more</a>
             </div>
             <!-- Collect Data for Analysis -->
             <h2>Collect Data for Analysis</h2>
             <hr>
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum.</p>
+            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum.</p>
             <!-- Register Your Organization -->
             <h2>Register Your Organization</h2>
             <hr>
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum.</p>
+            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum.</p>
         </div>
 
-        <div v-else class="container">
+        <div class="container" v-else>
             <!-- Jumbotron -->
             <div class="jumbotron">
                 <h1 class="display-4">OneMoreMeal™ with Sponsors</h1>
@@ -189,6 +196,7 @@
             </div>
         </div>
     </div>
+
     <div class="cotainer" v-if="is_login == false" id="register">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -233,10 +241,10 @@
 
                         <div class="form-group row">
                             <label for="tpye" class="col-md-4 col-form-label text-md-right">user type</label>
-                            <select v-model="registerData.data.type" name="type" id="type" class="col-md-4">
-                                <option>user</option>
-                                <option>sponsor</option>
-                                <option>authority</option>
+                            <select name="type" id="type" class="col-md-4">
+                                <option registerData.data.type=0>user</option>
+                                <option registerData.data.type=1>sponsor</option>
+                                <option registerData.data.type=2>authority</option>
                             </select>
                         </div>
 
@@ -270,8 +278,6 @@
 <script>
     const BASE_URL = 'https://pyghack.zuggr.com/'
 
-        <<
-        << << < HEAD
     const urlParams = new URLSearchParams(window.location.search);
 
     const store = new Vuex.Store({
@@ -299,139 +305,102 @@
 
     checkIfUserLoggedIn()
 
+    var welcome = new Vue({
+        el: '#top_welcome',
+        computed: {
+            is_org() {
+                return store.state.is_org
+            }
+        }
+    })
     var login = new Vue({
-                el: '#login',
+        el: '#login',
+        data: {
+            loginData: {
+                email: null,
+                password: null
+            }
+        },
+        methods: {
+            async login() {
+                var data = this.loginData
+                try {
+                    var response = await axios({
+                        method: 'POST',
+                        url: BASE_URL + 'passport/login',
+                        data: JSON.stringify(data)
+                    })
+                } catch (e) {
+                    alert('Invalid username or password')
+                }
+
+                alert('Login Success!')
+            }
+        },
+        computed: {
+            is_login() {
+                return store.state.is_login
+            }
+        }
+    })
+
+    var register = new Vue({
+        el: '#register',
+        data: {
+            registerData: {
+                password: null,
+                email: null,
+                code: null,
                 data: {
-                    loginData: {
-                        email: null,
-                        password: null ===
-                            === =
-                            const urlParams = new URLSearchParams(window.location.search);
+                    name: null,
+                    type: 'sponsor'
+                }
+            }
+        },
+        computed: {
+            is_login() {
+                return store.state.is_login
+            }
+        },
+        methods: {
+            async register() {
 
-                        const store = new Vuex.Store({
-                                state: {
-                                    is_login: urlParams.get('page') == 'login'
-                                },
-                                getters: {
-                                    //
-                                },
-                                mutations: {
-                                    //
-                                },
-                                actions: {
-                                    //
-                                    >>>
-                                    >>> > 5 b701b02951871aa4b211308131cf37cbb1933b7
-                                }
-                            },
-                            methods: {
-                                async login() {
-                                    var data = this.loginData
+                switch (this.registerData.data.type) {
+                    case 'sponsor':
+                        this.registerData.data.type = 0;
+                        break;
+                    case 'user':
+                        this.registerData.data.type = 1;
+                        break;
+                    case 'authority':
+                        this.registerData.data.type = 2;
+                        break;
+                }
 
-                                    try {
-                                        var response = await axios({
-                                            method: 'POST',
-                                            url: BASE_URL + 'passport/login',
-                                            data: JSON.stringify(data)
-                                        })
-                                    } catch (e) {
-                                        alert('Invalid username or password')
-                                    }
+                var response = await axios({
+                    method: 'POST',
+                    url: BASE_URL + 'passport/register',
+                    data: JSON.stringify(this.registerData)
+                })
+            },
+            async getCode() {
+                if (this.registerData.email == null) {
+                    alert('please fill')
+                    return
+                }
 
-                                    console.log(response.data)
-                                    alert('Welcome back! ' + response.data.data.name)
-                                }
-                            },
-                            computed: {
-                                is_login() {
-                                    return store.state.is_login
-                                }
-                            } <<
-                            << << < HEAD
-                        }) ===
-                    === =
+                await axios({
+                    method: 'POST',
+                    url: BASE_URL + 'send/validation',
+                    params: {
+                        email: this.registerData.email
+                    }
+                })
 
-                    checkIfUserLoggedIn()
-
-                    var login = new Vue({
-                                el: '#login',
-                                data: {
-                                    loginData: {
-                                        email: null,
-                                        password: null
-                                    }
-                                },
-                                methods: {
-                                    async login() {
-                                            var data = this.loginData >>>
-                                                >>> > 5 b701b02951871aa4b211308131cf37cbb1933b7
-
-                                            var welcome = new Vue({
-                                                el: '#top_welcome',
-                                                computed: {
-                                                    is_org() {
-                                                        return store.state.is_org
-                                                    }
-                                                }
-                                            })
-
-                                            var register = new Vue({
-                                                el: '#register',
-                                                data: {
-                                                    registerData: {
-                                                        password: null,
-                                                        email: null,
-                                                        code: null,
-                                                        data: {
-                                                            name: null,
-                                                            type: 'sponsor'
-                                                        }
-                                                    }
-                                                },
-                                                computed: {
-                                                    is_login() {
-                                                        return store.state.is_login
-                                                    }
-                                                },
-                                                methods: {
-                                                    async register() {
-
-                                                        switch (this.registerData.data.type) {
-                                                            case 'sponsor':
-                                                                this.registerData.data.type = 0;
-                                                                break;
-                                                            case 'user':
-                                                                this.registerData.data.type = 1;
-                                                                break;
-                                                            case 'authority':
-                                                                this.registerData.data.type = 2;
-                                                                break;
-                                                        }
-
-                                                        var response = await axios({
-                                                            method: 'POST',
-                                                            url: BASE_URL + 'passport/register',
-                                                            data: JSON.stringify(this.registerData)
-                                                        })
-                                                    },
-                                                    async getCode() {
-                                                        if (this.registerData.email == null) {
-                                                            alert('please fill')
-                                                            return
-                                                        }
-
-                                                        await axios({
-                                                            method: 'POST',
-                                                            url: BASE_URL + 'send/validation',
-                                                            params: {
-                                                                email: this.registerData.email
-                                                            }
-                                                        })
-
-                                                        alert('please check your email inbox')
-                                                    }
-                                                }
-                                            })
+                alert('please check your email inbox')
+            }
+        }
+    })
 </script>
 
 </html>
